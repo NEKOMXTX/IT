@@ -1,0 +1,71 @@
+h1 {
+
+    display: flex;
+    justify-content: center;
+}
+
+.photo {
+    float:left;
+    margin: 4px 10px 2px 0px;
+}
+
+body {
+    background-image: url(images/background.jpg);
+    font-size: 18px;
+}
+
+.main {
+    display: flex; /* все элементы div становились в одну строку */
+    justify-content: flex-start; /* выравнивание по горизонтали */
+}
+
+.personal {
+
+    padding-left: 15px;
+}
+
+.social {
+
+    padding-left: 15px;
+}
+
+.newsBlock {
+
+    display: block;
+    justify-content: flex-start;
+    flex-direction: column;
+    margin-right: 500px;
+}
+
+.new {
+    display: flex;
+    justify-content: flex-start;
+    padding: 10px 10px 10px 10px;
+    margin-right: 500px;
+    flex-direction: column;
+}
+
+input[type='text'] {
+    height: auto;
+    width: 500px;
+    
+}
+
+input[type='submit'] {
+    height: auto;
+    appearance: bottom;
+}
+
+.outline {
+    display: flex;
+    border: 3px solid black;
+    padding: 0 4px;
+}
+
+.new-outline {
+    display: flex;
+    border: 3px solid black;
+    padding-right: 1000px;
+    margin-right: 0px;
+}
+  

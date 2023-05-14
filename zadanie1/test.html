@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Опросная форма</title>
+  <script>
+    // Внутренний массив с правильными ответами
+    var correctAnswers = [2, 3, 1];
+
+    // Функция проверки ответов при нажатии на кнопку
+    function checkAnswers() {
+      var radios = document.querySelectorAll('input[type=radio]:checked');
+      var score = 0;
+      for (var i = 0; i < radios.length; i++) {
+        if (parseInt(radios[i].value) === correctAnswers[i]) {
+          radios[i].parentNode.style.color = 'green';
+          score++;
+        } else {
+          radios[i].parentNode.style.color = 'red';
+        }
+      }
+      alert('Вы набрали ' + score + ' балл(ов) из ' + correctAnswers.length + ' возможных');
+    }
+
+    // Функция проверки ответа при выборе варианта
+    function checkAnswer(radio) {
+      if (parseInt(radio.value) === correctAnswers[radio.name]) {
+        radio.parentNode.style.color = 'green';
+      } else {
+        radio.parentNode.style.color = 'red';
+      }
+    }
+
+    // Функция проверки ответов при обновлении страницы
+    function checkAnswersOnRefresh() {
+      var radios = document.querySelectorAll('input[type=radio]:checked');
+      for (var i = 0; i < radios.length; i++) {
+        if (parseInt(radios[i].value) === correctAnswers[i]) {
+          radios[i].parentNode.style.color = 'green';
+        } else {
+          radios[i].parentNode.style.color = 'red';
+        }
+      }
+    }
+
+    // Событие для обработки выбора варианта ответа
+    var radios = document.querySelectorAll('input[type=radio]');
+    for (var i = 0; i < radios.length; i++) {
+      radios[i].addEventListener('click', function() {
+        checkAnswer(this);
+      });
+    }
+
+    // Событие для обработки нажатия на кнопку
+    var checkButton = document.getElementById('check-button');
+    checkButton.addEventListener('click', function() {
+      checkAnswers();
+    });
+
+    // Событие для проверки ответов при обновлении страницы
+    window.addEventListener('load', function() {
+      checkAnswersOnRefresh();
+    });
+  </script>
+</head>
+<body>
+  <h1>Опросная форма</h1>
+  <form>
+    <p>1. Какая страна является родиной группы The Beatles?</p>
+    <label><input type="radio" name="0" value="1"> США</label>
+    <label><input type="radio" name="0" value="2"> Великобритания</label>
+    <label><input type="radio" name="0" value="3"> Австралия</label>
+    <br>
+    <p>2. Какая страна является родиной группы The Beatles?</p>
+    <label><input type="radio" name="0" value="1"> США</label>
+    <label><input type="radio" name="0" value="2"> Великобритания</label>
+    <label><input type="radio" name="0" value="3"> Австралия</label>
+    <p>3. Какая страна является родиной группы The Beatles?</p>
+    <label><input type="radio" name="0" value="1"> США</label>
+    <label><input type="radio" name="0" value="2"> Великобритания</label>
+    <label><input type="radio" name="0" value="3"> Австралия</label>
