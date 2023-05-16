@@ -178,26 +178,54 @@ function disableResetButton () {
   document.getElementById("resetButton").disabled = true;
 }
 
-// Выбираем все элементы с классом like-btn
+// Выбираем все элементы с классом like
 const likes = document.querySelectorAll('.like');
 
 // В каждом элементе выбираем плюс и минус. Навешиваем на событие клик функцию render()
 likes.forEach(like => {
-  const plus = like.querySelector('.like-btn');
-  const minus = like.querySelector('.like-btn');
+  const likeButton = like.querySelector('.like-btn');
+  const minus = like.querySelector('.dislike-btn');
   const counter_element = like.querySelector('.like-count');
   
   let counter = 0;
+  let isPlus = true;
   
-  plus.addEventListener('click', () => {
-    render(++counter, counter_element);
+  likeButton.addEventListener('click', () => {
+    if (isPlus) {
+      renderLike(++counter, counter_element);
+    } else {
+      renderLike(--counter, counter_element);
+    }
+    isPlus = !isPlus;
   });
-  
-  
 });
 
 // Функция обновляет текст
-const render = (counter, counter_element) => counter_element.innerText = counter;
+const renderLike = (counter, counter_element) => counter_element.innerText = counter;
+
+const dislikes = document.querySelectorAll('.dislike');
+
+dislikes.forEach(dislike => {
+  const dislikeButton = dislike.querySelector('.dislike-btn');
+  const counter_element = dislike.querySelector('.dislike-count');
+  
+  let counter = 0;
+  let isPlus = true;
+  
+  dislikeButton.addEventListener('click', () => {
+    if (isPlus) {
+      renderDislike(++counter, counter_element);
+    } else {
+      renderDislike(--counter, counter_element);
+    }
+    isPlus = !isPlus;
+  });
+});
+
+// Функция обновляет текст
+const renderDislike = (counter, counter_element) => counter_element.innerText = counter;
+
+
 
         // Для проверки по сабмиту
 // Обработчик события для формы
