@@ -178,6 +178,28 @@ function disableResetButton () {
   document.getElementById("resetButton").disabled = true;
 }
 
+        // Для проверки по сабмиту
+// Обработчик события для формы
+const quizForm = document.getElementById("quiz-form");
+quizForm.addEventListener("submit", checkAnswers);
+quizForm.addEventListener("submit", disableSubmitButton)
+quizForm.addEventListener("submit", enableResetButton)
+quizForm.addEventListener("reset", enableSubmitButton)
+quizForm.addEventListener("reset", disableResetButton)
+quizForm.addEventListener("reset", resetColorNone)
+quizForm.addEventListener("reset", enableRadioButtonsBlock)
+quizForm.addEventListener("reset", eraseResultContainer)
+
+
+// Обработчики событий для радиокнопок
+const radioButtons = document.querySelectorAll('input[type="radio"]');
+radioButtons.forEach((button) =>
+  button.addEventListener("change", checkAnswers)
+);
+
+// Обработчик события для обновления страницы
+window.addEventListener("load", checkAnswers);
+
 // Выбираем все элементы с классом like
 const likes = document.querySelectorAll('.like');
 
@@ -226,25 +248,4 @@ dislikes.forEach(dislike => {
 const renderDislike = (counter, counter_element) => counter_element.innerText = counter;
 
 
-
-        // Для проверки по сабмиту
-// Обработчик события для формы
-const quizForm = document.getElementById("quiz-form");
-quizForm.addEventListener("submit", checkAnswers);
-quizForm.addEventListener("submit", disableSubmitButton)
-quizForm.addEventListener("submit", enableResetButton)
-quizForm.addEventListener("reset", enableSubmitButton)
-quizForm.addEventListener("reset", disableResetButton)
-quizForm.addEventListener("reset", resetColorNone)
-quizForm.addEventListener("reset", enableRadioButtonsBlock)
-quizForm.addEventListener("reset", eraseResultContainer)
-
-
-// Обработчики событий для радиокнопок
-const radioButtons = document.querySelectorAll('input[type="radio"]');
-radioButtons.forEach((button) =>
-  button.addEventListener("change", checkAnswers)
-);
-
-// Обработчик события для обновления страницы
-window.addEventListener("load", checkAnswers);
+const events = document.querySelectorAll('.')
