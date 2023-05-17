@@ -197,57 +197,53 @@ radioButtons.forEach((button) =>
   button.addEventListener("change", checkAnswers)
 );
 
-// Обработчик события для обновления страницы
-window.addEventListener("load", checkAnswers);
 
-// Выбираем все элементы с классом like
-const likes = document.querySelectorAll('.like');
+function likeDislikeCounter () {
+  const likes = document.querySelectorAll('.like');
+const dislikes = document.querySelectorAll('.dislike');
 
-// В каждом элементе выбираем плюс и минус. Навешиваем на событие клик функцию render()
 likes.forEach(like => {
   const likeButton = like.querySelector('.like-btn');
-  const minus = like.querySelector('.dislike-btn');
-  const counter_element = like.querySelector('.like-count');
+  const counterElement = like.querySelector('.like-count');
 
-  counter_element.innerHTML = 0
-  let counter = counter_element.innerHTML;
+  counterElement.innerText = '5';
+  let counter = parseInt(counterElement.innerText, 10);
   let isPlus = true;
-  
+
   likeButton.addEventListener('click', () => {
     if (isPlus) {
-      renderLike(++counter, counter_element);
+      render(++counter, counterElement);
     } else {
-      renderLike(--counter, counter_element);
+      render(--counter, counterElement);
     }
     isPlus = !isPlus;
   });
 });
-
-// Функция обновляет текст
-const renderLike = (counter, counter_element) => counter_element.innerText = counter;
-
-const dislikes = document.querySelectorAll('.dislike');
 
 dislikes.forEach(dislike => {
   const dislikeButton = dislike.querySelector('.dislike-btn');
-  const counter_element = dislike.querySelector('.dislike-count');
-  
-  counter_element.innerHTML = 0
-  let counter = counter_element.innerHTML;
+  const counterElement = dislike.querySelector('.dislike-count');
+
+  counterElement.innerText = '4';
+  let counter = parseInt(counterElement.innerText, 10);
   let isPlus = true;
-  
+
   dislikeButton.addEventListener('click', () => {
     if (isPlus) {
-      renderDislike(++counter, counter_element);
+      render(--counter, counterElement);
     } else {
-      renderDislike(--counter, counter_element);
+      render(++counter, counterElement);
     }
     isPlus = !isPlus;
   });
 });
 
 // Функция обновляет текст
-const renderDislike = (counter, counter_element) => counter_element.innerText = counter;
+const render = (counter, counterElement) => counterElement.innerText = counter;
 
 
-const events = document.querySelectorAll('.')
+}
+
+// Выбираем все элементы с классом like
+
+likeDislikeCounter();

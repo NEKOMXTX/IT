@@ -145,13 +145,7 @@ body {
       margin-right: 8px;
     }
 
-    .like-btn {
-      color: green;
-    }
 
-    .dislike-btn {
-      color: red;
-    }
 
     /* Стили для счетчиков лайков и дизлайков */
     .like-count, .dislike-count {
