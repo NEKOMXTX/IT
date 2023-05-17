@@ -208,7 +208,8 @@ likes.forEach(like => {
   const likeButton = like.querySelector('.like-btn');
   const minus = like.querySelector('.dislike-btn');
   const counter_element = like.querySelector('.like-count');
-  
+
+  counter_element.innerHTML = 0
   let counter = counter_element.innerHTML;
   let isPlus = true;
   
@@ -231,6 +232,7 @@ dislikes.forEach(dislike => {
   const dislikeButton = dislike.querySelector('.dislike-btn');
   const counter_element = dislike.querySelector('.dislike-count');
   
+  counter_element.innerHTML = 0
   let counter = counter_element.innerHTML;
   let isPlus = true;
   
