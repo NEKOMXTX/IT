@@ -223,11 +223,11 @@ likes.forEach(like => {
     if (isPlus) {
       renderLike(++likeCounter, counterElement);
       globalLikeCounter = likeCounter; // Обновляем глобальную переменную
-      console.log(likeCounter);
+      
     } else {
       renderLike(--likeCounter, counterElement);
       globalLikeCounter = likeCounter; // Обновляем глобальную переменную
-      console.log(likeCounter);
+      
     }
     isPlus = !isPlus;
   });
@@ -245,11 +245,9 @@ dislikes.forEach(dislike => {
     if (isPlus) {
       renderDislike(++dislikeCounter, counterElement);
       globalDislikeCounter = dislikeCounter; // Обновляем глобальную переменную
-      console.log(dislikeCounter);
     } else {
       renderDislike(--dislikeCounter, counterElement);
       globalDislikeCounter = dislikeCounter; // Обновляем глобальную переменную
-      console.log(dislikeCounter);
     }
     isPlus = !isPlus;
   });
@@ -261,4 +259,5 @@ const renderDislike = (counter, counterElement) => counterElement.innerText = co
 
 console.log(globalLikeCounter);
 console.log(globalDislikeCounter);
+
 
