@@ -1,6 +1,3 @@
-          //изменение цвета окошка пройдите опрос
-
-
 let button = document.getElementById("modalbutton"); // находим элемент кнопки
 let colors = ["red", "orange", "yelllow", "green", "blue", "darkblue", "purple"]; // массив цветов
 let currentColorIndex = 0; // текущий индекс цвета
@@ -12,7 +9,6 @@ setInterval(function() {
   currentColorIndex = (currentColorIndex) % colors.length; // currentColorIndex + 1 убрано чтоб не словить приступ эпилепсии
 }, 100); // повторяем каждые 2 секунды
 
-            //Модальное окно
 
 // Получаем элементы модального окна и кнопку "Закрыть"
 var modal = document.querySelector(".modal");
