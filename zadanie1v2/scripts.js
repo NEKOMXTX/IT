@@ -198,23 +198,36 @@ radioButtons.forEach((button) =>
 );
 
 
-function likeDislikeCounter () {
-  const likes = document.querySelectorAll('.like');
+
+
+let globalLikeCounter;
+let globalDislikeCounter;
+
+const likes = document.querySelectorAll('.like');
 const dislikes = document.querySelectorAll('.dislike');
+
+// Объявляем глобальные переменные
+globalLikeCounter = 5;
+globalDislikeCounter = 4;
 
 likes.forEach(like => {
   const likeButton = like.querySelector('.like-btn');
   const counterElement = like.querySelector('.like-count');
+  
+  counterElement.innerHTML = globalLikeCounter;
 
-  counterElement.innerText = '5';
-  let counter = parseInt(counterElement.innerText, 10);
+  let likeCounter = globalLikeCounter; // Используем глобальную переменную
   let isPlus = true;
 
   likeButton.addEventListener('click', () => {
     if (isPlus) {
-      render(++counter, counterElement);
+      renderLike(++likeCounter, counterElement);
+      globalLikeCounter = likeCounter; // Обновляем глобальную переменную
+      console.log(likeCounter);
     } else {
-      render(--counter, counterElement);
+      renderLike(--likeCounter, counterElement);
+      globalLikeCounter = likeCounter; // Обновляем глобальную переменную
+      console.log(likeCounter);
     }
     isPlus = !isPlus;
   });
@@ -223,27 +236,29 @@ likes.forEach(like => {
 dislikes.forEach(dislike => {
   const dislikeButton = dislike.querySelector('.dislike-btn');
   const counterElement = dislike.querySelector('.dislike-count');
+  counterElement.innerHTML = globalDislikeCounter;
 
-  counterElement.innerText = '4';
-  let counter = parseInt(counterElement.innerText, 10);
+  let dislikeCounter = globalDislikeCounter; // Используем глобальную переменную
   let isPlus = true;
 
   dislikeButton.addEventListener('click', () => {
     if (isPlus) {
-      render(--counter, counterElement);
+      renderDislike(++dislikeCounter, counterElement);
+      globalDislikeCounter = dislikeCounter; // Обновляем глобальную переменную
+      console.log(dislikeCounter);
     } else {
-      render(++counter, counterElement);
+      renderDislike(--dislikeCounter, counterElement);
+      globalDislikeCounter = dislikeCounter; // Обновляем глобальную переменную
+      console.log(dislikeCounter);
     }
     isPlus = !isPlus;
   });
 });
 
 // Функция обновляет текст
-const render = (counter, counterElement) => counterElement.innerText = counter;
+const renderLike = (counter, counterElement) => counterElement.innerText = counter;
+const renderDislike = (counter, counterElement) => counterElement.innerText = counter;
 
+console.log(globalLikeCounter);
+console.log(globalDislikeCounter);
 
-}
-
-// Выбираем все элементы с классом like
-
-likeDislikeCounter();
