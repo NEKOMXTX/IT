@@ -207,7 +207,7 @@ const likes = document.querySelectorAll('.like');
 const dislikes = document.querySelectorAll('.dislike');
 
 // Объявляем глобальные переменные
-globalLikeCounter = 5;
+globalLikeCounter = 4;
 globalDislikeCounter = 4;
 
 likes.forEach(like => {
@@ -230,6 +230,7 @@ likes.forEach(like => {
       
     }
     isPlus = !isPlus;
+    changeColorOfEvent();
   });
 });
 
@@ -250,6 +251,7 @@ dislikes.forEach(dislike => {
       globalDislikeCounter = dislikeCounter; // Обновляем глобальную переменную
     }
     isPlus = !isPlus;
+    changeColorOfEvent();
   });
 });
 
@@ -260,4 +262,19 @@ const renderDislike = (counter, counterElement) => counterElement.innerText = co
 console.log(globalLikeCounter);
 console.log(globalDislikeCounter);
 
+function changeColorOfEvent () {
 
+  const eventElement = document.querySelector(".event")
+
+  if (globalLikeCounter > globalDislikeCounter) {
+    eventElement.style.backgroundColor = "#ABEBC6";
+
+  } else if (globalLikeCounter < globalDislikeCounter) {
+    eventElement.style.backgroundColor = "#F5B7B1";
+
+  } else {
+    eventElement.style.backgroundColor = "#E5E7E9";
+  }
+}
+
+changeColorOfEvent();
